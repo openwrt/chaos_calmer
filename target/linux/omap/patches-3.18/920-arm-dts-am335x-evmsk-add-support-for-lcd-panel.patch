@@ -40,7 +40,7 @@
  	user_leds_s0: user_leds_s0 {
  		pinctrl-single,pins = <
  			0x10 (PIN_OUTPUT_PULLDOWN | MUX_MODE7)	/* gpmc_ad4.gpio1_4 */
-@@ -665,6 +698,27 @@
+@@ -666,6 +699,27 @@
  		rx-num-evt = <32>;
  };
  

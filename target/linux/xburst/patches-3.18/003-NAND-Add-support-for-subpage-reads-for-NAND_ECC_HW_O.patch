@@ -86,7 +86,7 @@ Subject: [PATCH 3/7] NAND: Add support for subpage reads for
   * nand_read_page_syndrome - [REPLACEABLE] hardware ECC syndrome based page read
   * @mtd: mtd info structure
   * @chip: nand chip info structure
-@@ -3950,8 +4019,14 @@ int nand_scan_tail(struct mtd_info *mtd)
+@@ -3953,8 +4022,14 @@ int nand_scan_tail(struct mtd_info *mtd)
  			pr_warn("No ECC functions supplied; hardware ECC not possible\n");
  			BUG();
  		}
