@@ -1,6 +1,6 @@
 --- a/drivers/pinctrl/Kconfig
 +++ b/drivers/pinctrl/Kconfig
-@@ -67,6 +67,15 @@ config PINCTRL_AT91
+@@ -68,6 +68,15 @@ config PINCTRL_AT91
  	help
  	  Say Y here to enable the at91 pinctrl driver
  

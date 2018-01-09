@@ -903,7 +903,7 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
  }
 --- a/drivers/pinctrl/Kconfig
 +++ b/drivers/pinctrl/Kconfig
-@@ -103,6 +103,11 @@ config PINCTRL_LANTIQ
+@@ -104,6 +104,11 @@ config PINCTRL_LANTIQ
  	select PINMUX
  	select PINCONF
  
