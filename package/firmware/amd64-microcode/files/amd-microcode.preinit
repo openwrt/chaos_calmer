@@ -1,0 +1,8 @@
+#!/bin/sh
+# Copyright (C) 2018 OpenWrt.org
+
+do_load_amd_ucode() {
+	echo 1 > /sys/devices/system/cpu/microcode/reload
+}
+
+boot_hook_add preinit_main do_load_amd_ucode
