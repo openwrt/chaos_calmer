@@ -1,0 +1,11 @@
+diff -ruN a/iucode_tool.c b/iucode_tool.c
+--- a/iucode_tool.c	2017-08-28 02:20:36.000000000 +0200
++++ b/iucode_tool.c	2018-01-19 21:30:11.000000000 +0100
+@@ -31,6 +31,7 @@
+ #include <dirent.h>
+ #include <time.h>
+ #include <cpuid.h>
++#include <limits.h>
+ 
+ #include "intel_microcode.h"
+ 
