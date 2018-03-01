@@ -1,0 +1,14 @@
+diff --git a/lib/blkid/devname.c b/lib/blkid/devname.c
+index a6673c1..f1e7ad8 100644
+--- a/lib/blkid/devname.c
++++ b/lib/blkid/devname.c
+@@ -37,6 +37,9 @@
+ #include <sys/mkdev.h>
+ #endif
+ #include <time.h>
++#ifdef __GLIBC__
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "blkidP.h"
+ 

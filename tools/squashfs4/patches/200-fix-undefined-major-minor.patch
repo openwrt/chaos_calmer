@@ -1,0 +1,30 @@
+diff --git a/squashfs-tools/mksquashfs.c b/squashfs-tools/mksquashfs.c
+index aec7e49..5eb9391 100644
+--- a/squashfs-tools/mksquashfs.c
++++ b/squashfs-tools/mksquashfs.c
+@@ -53,6 +53,10 @@
+ #include <fnmatch.h>
+ #include <sys/wait.h>
+ 
++#ifdef __GLIBC__
++#include <sys/sysmacros.h>
++#endif
++
+ #ifndef linux
+ #ifndef __CYGWIN__
+ #define __BYTE_ORDER BYTE_ORDER
+diff --git a/squashfs-tools/unsquashfs.h b/squashfs-tools/unsquashfs.h
+index bfe6782..8d049d0 100644
+--- a/squashfs-tools/unsquashfs.h
++++ b/squashfs-tools/unsquashfs.h
+@@ -48,6 +48,10 @@
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
+ 
++#ifdef __GLIBC__
++#include <sys/sysmacros.h>
++#endif
++
+ #ifndef linux
+ #ifndef __CYGWIN__
+ #define __BYTE_ORDER BYTE_ORDER
