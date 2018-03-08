@@ -99,12 +99,14 @@ menu "Global build settings"
 
 	config PKG_BUILD_USE_JOBSERVER
 		bool
-		prompt "Use top-level make jobserver for packages"
+		prompt "Use top-level make jobserver for packages (HORRIBLY BROKEN!!)"
 		depends on PKG_BUILD_PARALLEL
 		default y
 		help
 		  This passes the main make process jobserver fds to package builds,
-		  enabling full parallelization across different packages.
+		  enabling full parallelization across different packages.  On
+		  some systems, this feature results in an infinite number of
+		  makes being allowed, resulting in a paralyzed system!
 
 		  Note that disabling this may overcommit CPU resources depending on the
 		  -j level of the main make process, the number of package submake jobs
@@ -113,14 +115,15 @@ menu "Global build settings"
 		  is also set to 4, we may end up with 16 parallel make processes
 		  in the worst case.
 
-	config PKG_BUILD_JOBS
-		int
-		prompt "Number of package submake jobs (2-512)"
-		range 2 512
-		default 2
+	config PKG_BUILD_MAKEFLAGS
+		string
+		prompt "Per-package MAKEFLAGS"
+		default "-j2 --load-average=3"
 		depends on PKG_BUILD_PARALLEL && !PKG_BUILD_USE_JOBSERVER
 		help
-		  The number of jobs (-jX) to pass to packages submake.
+		  MAKEFLAGS to use per-package.  On a modern system, this
+		  should typically be something like -j<num_cpus + 1>
+		  --load-average=<num_cpus + 1>.
 
 	config PKG_DEFAULT_PARALLEL
 		bool
