@@ -11,7 +11,7 @@
      unsigned char ntbuffer[0x18];
 --- a/lib/vtls/vtls.c
 +++ b/lib/vtls/vtls.c
-@@ -835,9 +835,9 @@ void Curl_ssl_md5sum(unsigned char *tmp,
+@@ -846,9 +846,9 @@ void Curl_ssl_md5sum(unsigned char *tmp,
                       unsigned char *md5sum, /* output */
                       size_t md5len)
  {
