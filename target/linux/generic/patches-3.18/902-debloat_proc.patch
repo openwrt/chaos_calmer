@@ -251,7 +251,7 @@
  
 --- a/ipc/msg.c
 +++ b/ipc/msg.c
-@@ -1072,6 +1072,9 @@ void __init msg_init(void)
+@@ -1075,6 +1075,9 @@ void __init msg_init(void)
  	printk(KERN_INFO "msgmni has been set to %d\n",
  		init_ipc_ns.msg_ctlmni);
  

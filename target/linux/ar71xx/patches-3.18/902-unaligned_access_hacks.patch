@@ -474,7 +474,7 @@
  		if ((foc->len & 3) == 2) {
 --- a/net/ipv4/igmp.c
 +++ b/net/ipv4/igmp.c
-@@ -519,7 +519,7 @@ static struct sk_buff *add_grec(struct s
+@@ -523,7 +523,7 @@ static struct sk_buff *add_grec(struct s
  		if (!skb)
  			return NULL;
  		psrc = (__be32 *)skb_put(skb, sizeof(__be32));
