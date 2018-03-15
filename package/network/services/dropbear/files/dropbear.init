@@ -41,7 +41,7 @@ validate_section_dropbear()
 		'Port:list(port):22' \
 		'SSHKeepAlive:uinteger:300' \
 		'IdleTimeout:uinteger:0' \
-		'mdns:uinteger:1'
+		'mdns:bool:1'
 }
 
 dropbear_instance()
@@ -109,7 +109,9 @@ keygen()
 load_interfaces()
 {
 	config_get interface "$1" Interface
-	interfaces=" ${interface} ${interfaces}"
+	config_get enable "$1" enable 1
+
+	[ "${enable}" = "1" ] && interfaces=" ${interface} ${interfaces}"
 }
 
 start_service()
@@ -127,18 +129,16 @@ service_triggers()
 {
 	local interfaces
 
-	procd_open_trigger
 	procd_add_config_trigger "config.change" "dropbear" /etc/init.d/dropbear reload
 
 	config_load "${NAME}"
 	config_foreach load_interfaces dropbear
 
-	[ -n "${interfaces}" ] & {
+	[ -n "${interfaces}" ] && {
 		for n in $interfaces ; do
 			procd_add_interface_trigger "interface.*" $n /etc/init.d/dropbear reload
 		done
 	}
-	procd_close_trigger
 
 	procd_add_validation validate_section_dropbear
 }
