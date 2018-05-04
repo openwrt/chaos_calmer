@@ -263,7 +263,7 @@
  		case IPV6_2292HOPOPTS:
 --- a/net/ipv6/ip6_gre.c
 +++ b/net/ipv6/ip6_gre.c
-@@ -482,11 +482,11 @@ static int ip6gre_rcv(struct sk_buff *sk
+@@ -484,11 +484,11 @@ static int ip6gre_rcv(struct sk_buff *sk
  			offset += 4;
  		}
  		if (flags&GRE_KEY) {
@@ -277,7 +277,7 @@
  			offset += 4;
  		}
  	}
-@@ -751,7 +751,7 @@ static netdev_tx_t ip6gre_xmit2(struct s
+@@ -753,7 +753,7 @@ static netdev_tx_t ip6gre_xmit2(struct s
  
  		if (tunnel->parms.o_flags&GRE_SEQ) {
  			++tunnel->o_seqno;
@@ -286,7 +286,7 @@
  			ptr--;
  		}
  		if (tunnel->parms.o_flags&GRE_KEY) {
-@@ -847,7 +847,7 @@ static inline int ip6gre_xmit_ipv6(struc
+@@ -849,7 +849,7 @@ static inline int ip6gre_xmit_ipv6(struc
  
  	dsfield = ipv6_get_dsfield(ipv6h);
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS)
@@ -297,7 +297,7 @@
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FWMARK)
 --- a/net/ipv6/ip6_tunnel.c
 +++ b/net/ipv6/ip6_tunnel.c
-@@ -1301,7 +1301,7 @@ ip6ip6_tnl_xmit(struct sk_buff *skb, str
+@@ -1304,7 +1304,7 @@ ip6ip6_tnl_xmit(struct sk_buff *skb, str
  
  	dsfield = ipv6_get_dsfield(ipv6h);
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS)
@@ -346,7 +346,7 @@
  	for (p = *head; p; p = p->next) {
 --- a/net/ipv4/route.c
 +++ b/net/ipv4/route.c
-@@ -454,7 +454,7 @@ static struct neighbour *ipv4_neigh_look
+@@ -456,7 +456,7 @@ static struct neighbour *ipv4_neigh_look
  	else if (skb)
  		pkey = &ip_hdr(skb)->daddr;
  

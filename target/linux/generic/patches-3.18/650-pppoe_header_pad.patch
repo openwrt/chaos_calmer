@@ -1,6 +1,6 @@
 --- a/drivers/net/ppp/pppoe.c
 +++ b/drivers/net/ppp/pppoe.c
-@@ -860,7 +860,7 @@ static int pppoe_sendmsg(struct kiocb *i
+@@ -864,7 +864,7 @@ static int pppoe_sendmsg(struct kiocb *i
  		goto end;
  
  	hlen = LL_RESERVED_SPACE(dev);
@@ -9,7 +9,7 @@
  			   dev->needed_tailroom, 0, GFP_KERNEL);
  	if (!skb) {
  		error = -ENOMEM;
-@@ -868,7 +868,7 @@ static int pppoe_sendmsg(struct kiocb *i
+@@ -872,7 +872,7 @@ static int pppoe_sendmsg(struct kiocb *i
  	}
  
  	/* Reserve space for headers. */

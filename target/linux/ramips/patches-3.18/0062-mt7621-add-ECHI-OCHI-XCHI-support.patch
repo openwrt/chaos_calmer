@@ -3802,7 +3802,7 @@
  	if (seg->trbs) {
  		dma_pool_free(xhci->segment_pool, seg->trbs, seg->dma);
  		seg->trbs = NULL;
-@@ -1482,9 +1485,17 @@ int xhci_endpoint_init(struct xhci_hcd *
+@@ -1483,9 +1486,17 @@ int xhci_endpoint_init(struct xhci_hcd *
  			max_burst = (usb_endpoint_maxp(&ep->desc)
  				     & 0x1800) >> 11;
  		}
