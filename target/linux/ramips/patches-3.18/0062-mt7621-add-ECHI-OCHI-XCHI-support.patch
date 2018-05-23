@@ -16,7 +16,7 @@
  		/* EHCI, OHCI */
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
-@@ -1261,7 +1261,7 @@ static void hub_quiesce(struct usb_hub *
+@@ -1266,7 +1266,7 @@ static void hub_quiesce(struct usb_hub *
  	if (type != HUB_SUSPEND) {
  		/* Disconnect all the children */
  		for (i = 0; i < hdev->maxchild; ++i) {
