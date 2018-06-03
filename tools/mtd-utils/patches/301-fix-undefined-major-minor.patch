@@ -1,0 +1,14 @@
+diff --git a/include/common.h b/include/common.h
+index 224a217..16a050d 100644
+--- a/include/common.h
++++ b/include/common.h
+@@ -27,6 +27,9 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <inttypes.h>
++#ifdef __GLIBC__
++#include <sys/sysmacros.h>
++#endif
+ #include "version.h"
+ 
+ #ifndef PROGRAM_NAME
