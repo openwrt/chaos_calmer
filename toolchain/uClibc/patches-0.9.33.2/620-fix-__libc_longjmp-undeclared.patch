@@ -1,0 +1,13 @@
+diff --git b/libpthread/nptl/sysdeps/pthread/pt-longjmp.c a/libpthread/nptl/sysdeps/pthread/pt-longjmp.c
+index f161380..fb0628d 100644
+--- b/libpthread/nptl/sysdeps/pthread/pt-longjmp.c
++++ a/libpthread/nptl/sysdeps/pthread/pt-longjmp.c
+@@ -21,6 +21,8 @@
+ #include <stdlib.h>
+ #include "pthreadP.h"
+ 
++extern __typeof(longjmp) __libc_longjmp attribute_noreturn;
++
+ void
+ longjmp (jmp_buf env, int val)
+ {
