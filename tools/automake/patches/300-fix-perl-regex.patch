@@ -1,0 +1,12 @@
+diff -Naur a/bin/automake.in b/bin/automake.in
+--- a/bin/automake.in	2018-06-27 09:44:37.925093190 +0000
++++ b/bin/automake.in	2018-06-27 10:55:30.861205032 +0000
+@@ -3880,7 +3880,7 @@
+ sub substitute_ac_subst_variables
+ {
+   my ($text) = @_;
+-  $text =~ s/\${([^ \t=:+{}]+)}/substitute_ac_subst_variables_worker ($1)/ge;
++  $text =~ s/\$[{]([^ \t=:+{}]+)}/substitute_ac_subst_variables_worker ($1)/ge;
+   return $text;
+ }
+ 
