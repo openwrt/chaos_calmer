@@ -1,13 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ubus
-PKG_VERSION:=2015-05-25
+PKG_VERSION:=2016-07-02
 PKG_RELEASE=$(PKG_SOURCE_VERSION)
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=http://git.openwrt.org/project/ubus.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=f361bfa5fcb2daadf3b160583ce665024f8d108e
+PKG_SOURCE_VERSION:=053be7df871e05478284235732f8b0608089512f
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
 PKG_MIRROR_MD5SUM:=
 CMAKE_INSTALL:=1
@@ -31,13 +31,13 @@ define Package/ubusd
   SECTION:=base
   CATEGORY:=Base system
   TITLE:=OpenWrt RPC daemon
-  DEPENDS:=+libubox
+  DEPENDS:=+libubox +libblobmsg-json
 endef
 
 define Package/libubus
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+libubox
+  DEPENDS:=+libubox +libblobmsg-json
   ABI_VERSION:=$(PKG_VERSION)
   TITLE:=OpenWrt RPC client library
 endef
@@ -45,7 +45,7 @@ endef
 define Package/libubus-lua
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+libubus +liblua
+  DEPENDS:=+libubus +liblua +libblobmsg-json
   TITLE:=Lua binding for the OpenWrt RPC client
 endef
 

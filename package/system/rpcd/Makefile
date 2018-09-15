@@ -36,7 +36,7 @@ define Package/rpcd/default
   SECTION:=utils
   CATEGORY:=Base system
   TITLE:=OpenWrt ubus RPC backend server
-  DEPENDS:=+libubus +libubox
+  DEPENDS:=+libubus +libubox +libblobmsg-json
 endef
 
 define Package/rpcd
