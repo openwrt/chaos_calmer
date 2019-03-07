@@ -1,0 +1,27 @@
+--- a/libfstools/mount.c
++++ b/libfstools/mount.c
+@@ -98,16 +98,21 @@ fopivot(char *rw_root, char *ro_root)
+ 	 */
+ 	snprintf(lowerdir, sizeof(lowerdir), "lowerdir=/,upperdir=%s", rw_root);
+ 	if (mount(overlay, "/mnt", "overlayfs", MS_NOATIME, lowerdir)) {
+-		char upperdir[64], workdir[64], upgrade[64], upgrade_dest[64];
++		char upperdir[64], workdir[64], upgrade[64], upgrade_dest[64], rmdir_work[64];
+ 		struct stat st;
+-
++		int ret;
++		
+ 		snprintf(upperdir, sizeof(upperdir), "%s/upper", rw_root);
+ 		snprintf(workdir, sizeof(workdir), "%s/work", rw_root);
+ 		snprintf(upgrade, sizeof(upgrade), "%s/sysupgrade.tgz", rw_root);
+ 		snprintf(upgrade_dest, sizeof(upgrade_dest), "%s/sysupgrade.tgz", upperdir);
+ 		snprintf(lowerdir, sizeof(lowerdir), "lowerdir=/,upperdir=%s,workdir=%s",
+ 			 upperdir, workdir);
+-
++		
++		snprintf(rmdir_work, sizeof(rmdir_work), "/bin/rm -rf %s", workdir);
++		ret = system(rmdir_work);
++		ULOG_ERR("fopivot system(rmdir_work: %s) = %d \n", rmdir_work, ret);
++		
+ 		/*
+ 		 * Overlay FS v23 and later requires both a upper and
+ 		 * a work directory, both on the same filesystem, but
