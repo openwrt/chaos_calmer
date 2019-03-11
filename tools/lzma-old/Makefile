@@ -11,7 +11,7 @@ PKG_VERSION:=4.32
 
 PKG_SOURCE:=lzma-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=http://downloads.openwrt.org/sources/
-PKG_MD5SUM:=5587d6ac230ad1903d504fc3253f0e42
+PKG_HASH:=49053e4bb5e0646a841d250d9cb81f7714f5fff04a133216c4748163567acc3d
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/lzma-$(PKG_VERSION)
 
@@ -21,7 +21,9 @@ LIB_DIR=$(HOST_BUILD_DIR)/C/7zip/Compress/LZMA_Lib
 ALONE_DIR=$(HOST_BUILD_DIR)/C/7zip/Compress/LZMA_Alone
 
 define Host/Compile
+	+$(HOST_MAKE_VARS) \
 	$(MAKE) -C $(LIB_DIR)
+	+$(HOST_MAKE_VARS) \
 	$(MAKE) -f makefile.gcc -C $(ALONE_DIR)
 endef
 
